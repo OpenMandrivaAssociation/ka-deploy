@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.92
-%define release %mkrel 14
+%define release %mkrel 15
 %define tftpbase tftpboot
 
 Release:        %{release}
@@ -8,7 +8,7 @@ Version:        %{version}
 Summary:        Ka-deploy cluster installation solution
 Name:           %{name}
 License:        GPL
-Group:          System/Deploiment
+Group:          System/Deployment
 Source:         %{name}.tar.bz2
 Patch0:         ka-deploy-fs.patch
 Patch1:         ka-deploy-fstab.patch

@@ -16,6 +16,7 @@ Patch2:         ka-deploy.patch
 Patch3:         ka-d.sh.patch
 Patch4:         ka-deploy-ka-d.sh-cciss.patch
 Url:            http://ka-tools.sourceforge.net
+BuildRequires:	glibc-static-devel
 
 %description
 Ka-deploy is a tool for cloning large numbers of machines on a cluster

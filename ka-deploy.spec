@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.92
-%define release %mkrel 16
+%define release %mkrel 17
 %define tftpbase tftpboot
 
 Release:        %{release}
@@ -8,7 +8,7 @@ Version:        %{version}
 Summary:        Ka-deploy cluster installation solution
 Name:           %{name}
 License:        GPL
-Group:          System/Deployment
+Group:          System/Cluster
 Source:         %{name}.tar.bz2
 Patch0:         ka-deploy-fs.patch
 Patch1:         ka-deploy-fstab.patch
@@ -23,7 +23,7 @@ Ka-deploy is a tool for cloning large numbers of machines on a cluster
 
 %package server-host
 Summary:        Ka-deploy cluster installation solution - server host side
-Group:          System/Deployment
+Group:          System/Cluster
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 Requires:       sh-utils bind-utils, syslinux >= 1.67
 License:        GPL
@@ -34,7 +34,7 @@ This package is to be installed on a server
 
 %package source-node
 Summary:        Ka-deploy cluster installation solution - source node side
-Group:          System/Deployment
+Group:          System/Cluster
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 Requires:       sh-utils
 License:        GPL

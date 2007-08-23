@@ -25,7 +25,7 @@ Ka-deploy is a tool for cloning large numbers of machines on a cluster
 Summary:        Ka-deploy cluster installation solution - server host side
 Group:          System/Cluster
 BuildRoot:      %{_tmppath}/%{name}-%{version}
-Requires:       sh-utils bind-utils, syslinux >= 1.67
+Requires:       coreutils bind-utils, syslinux >= 1.67
 License:        GPL
 
 %description server-host
@@ -36,7 +36,7 @@ This package is to be installed on a server
 Summary:        Ka-deploy cluster installation solution - source node side
 Group:          System/Cluster
 BuildRoot:      %{_tmppath}/%{name}-%{version}
-Requires:       sh-utils
+Requires:       coreutils
 License:        GPL
 
 %description source-node

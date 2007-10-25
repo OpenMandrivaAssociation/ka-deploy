@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.92
-%define release %mkrel 19
+%define release %mkrel 20
 %define tftpbase tftpboot
 
 Release:        %{release}
@@ -80,6 +80,7 @@ mkdir -p $RPM_BUILD_ROOT/usr/bin/
 mkdir -p $RPM_BUILD_ROOT/etc/rc.d/init.d/
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/ka
 
 install -m 755 src/ka-d-server $RPM_BUILD_ROOT%{_bindir}/ka-d-server
 install -m 755 src/ka-d-client $RPM_BUILD_ROOT%{_bindir}/ka-d-client
@@ -92,12 +93,12 @@ install -m 755 scripts/ka_replication.sh $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/make_initrd_grub $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/make_initrd_lilo $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/prepare_node.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/send_status.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/status_node.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/store_log.sh $RPM_BUILD_ROOT%{_bindir}/
 # mke2fs built with dietlibc
 install -m 755 scripts/mke2fs $RPM_BUILD_ROOT%{_bindir}/mke2fs_diet
+install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_sysconfdir}/ka
 
 install -m 644 doc/ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.1
 ln -s ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.sh.1
@@ -130,6 +131,7 @@ cp -f /usr/lib/syslinux/pxelinux.0 /%{tftpbase}/ka/pxelinux.0
 %files source-node
 %defattr(-,root,root)
 
+%config(noreplace) %{_sysconfdir}/ka
 %doc %{_mandir}/man1/ka-deploy.*
 %doc %{_mandir}/man1/ka-d-server.*
 %doc %{_mandir}/man1/ka-d.*

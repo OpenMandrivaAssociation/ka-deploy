@@ -96,6 +96,8 @@ install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/send_status.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/status_node.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/store_log.sh $RPM_BUILD_ROOT%{_bindir}/
+# mke2fs built with dietlibc
+install -m 755 scripts/mke2fs $RPM_BUILD_ROOT%{_bindir}/mke2fs_diet
 
 install -m 644 doc/ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.1
 ln -s ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.sh.1

@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.92
-%define release %mkrel 18
+%define release %mkrel 19
 %define tftpbase tftpboot
 
 Release:        %{release}
@@ -10,12 +10,7 @@ Name:           %{name}
 License:        GPL
 Group:          System/Cluster
 Source:         %{name}.tar.bz2
-Patch0:         ka-deploy-fs.patch
-Patch1:         ka-deploy-fstab.patch
-Patch2:         ka-deploy.patch
-Patch3:         ka-d.sh.patch
-Patch4:         ka-deploy-ka-d.sh-cciss.patch
-Url:            http://ka-tools.sourceforge.net
+Url:            http://kadeploy.imag.fr/
 BuildRequires:	glibc-static-devel
 
 %description
@@ -45,10 +40,6 @@ This package is to be installed on the source node
 
 %prep
 %setup -q -n ka-deploy
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
 
 %build
 # remove all the CVS directories
@@ -93,6 +84,19 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}
 install -m 755 src/ka-d-server $RPM_BUILD_ROOT%{_bindir}/ka-d-server
 install -m 755 src/ka-d-client $RPM_BUILD_ROOT%{_bindir}/ka-d-client
 install -m 755 scripts/ka-d.sh $RPM_BUILD_ROOT%{_bindir}/ka-d.sh
+install -m 755 scripts/bootable_flag.sh $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/fdisk_to_desc $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/gen_modprobe_conf.pl $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/ka-d.sh $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/ka_replication.sh $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/make_initrd_grub $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/make_initrd_lilo $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/prepare_node.sh $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/send_status.pl $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/status_node.pl $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/store_log.sh $RPM_BUILD_ROOT%{_bindir}/
+
 install -m 644 doc/ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.1
 ln -s ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.sh.1
 # END OF CLIENT SIDE

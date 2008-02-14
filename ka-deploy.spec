@@ -9,6 +9,7 @@ Summary:        Ka-deploy cluster installation solution
 Name:           %{name}
 License:        GPL
 Group:          System/Cluster
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:         %{name}.tar.bz2
 Url:            http://kadeploy.imag.fr/
 BuildRequires:	glibc-static-devel

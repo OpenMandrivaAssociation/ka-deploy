@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.92
-%define release %mkrel 21
+%define release %mkrel 22
 %define tftpbase tftpboot
 
 Release:        %{release}

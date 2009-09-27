@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.92
-%define release %mkrel 22
+%define release %mkrel 23
 %define tftpbase tftpboot
 
 Release:        %{release}
@@ -11,6 +11,7 @@ License:        GPL
 Group:          System/Cluster
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:         %{name}.tar.bz2
+Patch0:		ka-deploy_dont_use_m32.patch
 Url:            http://kadeploy.imag.fr/
 BuildRequires:	glibc-static-devel
 
@@ -39,7 +40,7 @@ This package is to be installed on the source node
 
 %prep
 %setup -q -n ka-deploy
-
+%patch0 -p1 -b .m32
 %build
 # remove all the CVS directories
 rm -rf `find -type d -name "CVS"`

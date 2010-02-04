@@ -1,7 +1,9 @@
 %define name    ka-deploy
-%define version 0.92
-%define release %mkrel 23
+%define version 0.93
+%define release %mkrel 1
 %define tftpbase tftpboot
+%define dont_strip 1
+
 
 Release:        %{release}
 Version:        %{version}
@@ -10,7 +12,7 @@ Name:           %{name}
 License:        GPL
 Group:          System/Cluster
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Source:         %{name}.tar.bz2
+Source:         %{name}-%{version}.tar.bz2
 Patch0:		ka-deploy_dont_use_m32.patch
 Url:            http://kadeploy.imag.fr/
 BuildRequires:	glibc-static-devel
@@ -39,14 +41,20 @@ Ka-deploy is a tool for cloning large numbers of machines on a cluster
 This package is to be installed on the source node
 
 %prep
-%setup -q -n ka-deploy
+%setup -q -n %name-%version
+%ifarch mips arm
 %patch0 -p1 -b .m32
+%endif
 %build
 # remove all the CVS directories
 rm -rf `find -type d -name "CVS"`
 
+# e2fsprog should provide a static binairies
+# or latest busybox 1.6.0 to get mke2fs
+# i will ask for an update of busybox
+EXCLUDE_FROM_STRIP="%{_bindir}/mke2fs.static"
+export EXCLUDE_FROM_STRIP
 # compile
-#du
 cd src && make
 
 %install
@@ -96,8 +104,8 @@ install -m 755 scripts/prepare_node.sh $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/send_status.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/status_node.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/store_log.sh $RPM_BUILD_ROOT%{_bindir}/
-# mke2fs built with dietlibc
-install -m 755 scripts/mke2fs $RPM_BUILD_ROOT%{_bindir}/mke2fs_diet
+# mke2fs built with -static
+install -m 755 scripts/mke2fs.static $RPM_BUILD_ROOT%{_bindir}/mke2fs.static
 install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_sysconfdir}/ka
 
 install -m 644 doc/ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.1
@@ -139,3 +147,5 @@ cp -f /usr/lib/syslinux/pxelinux.0 /%{tftpbase}/ka/pxelinux.0
 %{_bindir}/*
 %{_datadir}/%{name}-%{version}
 
+
+%changelog

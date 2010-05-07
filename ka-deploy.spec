@@ -1,5 +1,5 @@
 %define name    ka-deploy
-%define version 0.94.3
+%define version 0.94.4
 %define release %mkrel 1
 %define tftpbase tftpboot
 %define dont_strip 1
@@ -74,6 +74,7 @@ install -m 755 scripts/prepare_node.sh $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/send_status.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/status_node.pl $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/store_log.sh $RPM_BUILD_ROOT%{_bindir}/
+install -m 755 scripts/udev_creation.sh $RPM_BUILD_ROOT%{_bindir}/
 install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_sysconfdir}/ka
 
 install -m 644 doc/ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.1

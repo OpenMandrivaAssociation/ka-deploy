@@ -1,6 +1,6 @@
 %define name    ka-deploy
-%define version 0.94.3
-%define release %mkrel 2
+%define version 0.94.4
+%define release %mkrel 1
 %define tftpbase tftpboot
 %define dont_strip 1
 
@@ -93,6 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files source-node
 %defattr(-,root,root)
+%doc doc/duplication.html
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/ka
 %doc %{_mandir}/man1/ka-d*

@@ -1,6 +1,6 @@
 %define name    ka-deploy
 %define version 0.94.4
-%define release %mkrel 3
+%define release %mkrel 4
 %define tftpbase tftpboot
 %define dont_strip 1
 
@@ -14,6 +14,7 @@ Group:          System/Cluster
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:         %{name}-%{version}.tar.bz2
 Patch0:		ka-deploy_dont_use_m32.patch
+Patch1:		ka-deploy_fix_unused_pdata_var
 Url:            http://kadeploy.imag.fr/
 BuildRequires:	glibc-static-devel
 
@@ -46,6 +47,7 @@ This package is to be installed on the source node
 %ifarch mips arm
 %patch0 -p1 -b .m32
 %endif
+%patch1	-p0
 %build
 # remove all the CVS directories
 rm -rf `find -type d -name "CVS"`

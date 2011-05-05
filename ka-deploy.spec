@@ -47,7 +47,7 @@ This package is to be installed on the source node
 %ifarch mips arm
 %patch0 -p1 -b .m32
 %endif
-%patch1	-p0
+%patch1	-p1
 %build
 # remove all the CVS directories
 rm -rf `find -type d -name "CVS"`

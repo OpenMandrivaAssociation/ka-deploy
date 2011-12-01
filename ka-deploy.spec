@@ -56,38 +56,38 @@ rm -rf `find -type d -name "CVS"`
 cd src && make
 
 %install
-rm -Rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_bindir}
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/ka
+rm -Rf %{buildroot}
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_datadir}/%{name}-%{version}
+mkdir -p %{buildroot}%{_sysconfdir}/ka
 
-install -m 755 src/ka-d-server $RPM_BUILD_ROOT%{_bindir}/ka-d-server
-install -m 755 src/ka-d-client $RPM_BUILD_ROOT%{_bindir}/ka-d-client
-install -m 755 scripts/ka-d.sh $RPM_BUILD_ROOT%{_bindir}/ka-d.sh
-install -m 755 scripts/bootable_flag.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/fdisk_to_desc $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/gen_modprobe_conf.pl $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/ka-d.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/ka_replication.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/make_initrd_grub $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/make_initrd_lilo $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/prepare_node.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/send_status.pl $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/status_node.pl $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/store_log.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/udev_creation.sh $RPM_BUILD_ROOT%{_bindir}/
-install -m 755 scripts/replication.conf $RPM_BUILD_ROOT%{_sysconfdir}/ka
+install -m 755 src/ka-d-server %{buildroot}%{_bindir}/ka-d-server
+install -m 755 src/ka-d-client %{buildroot}%{_bindir}/ka-d-client
+install -m 755 scripts/ka-d.sh %{buildroot}%{_bindir}/ka-d.sh
+install -m 755 scripts/bootable_flag.sh %{buildroot}%{_bindir}/
+install -m 755 scripts/fdisk_to_desc %{buildroot}%{_bindir}/
+install -m 755 scripts/gen_modprobe_conf.pl %{buildroot}%{_bindir}/
+install -m 755 scripts/ka-d.sh %{buildroot}%{_bindir}/
+install -m 755 scripts/ka_replication.sh %{buildroot}%{_bindir}/
+install -m 755 scripts/make_initrd_grub %{buildroot}%{_bindir}/
+install -m 755 scripts/make_initrd_lilo %{buildroot}%{_bindir}/
+install -m 755 scripts/prepare_node.sh %{buildroot}%{_bindir}/
+install -m 755 scripts/send_status.pl %{buildroot}%{_bindir}/
+install -m 755 scripts/status_node.pl %{buildroot}%{_bindir}/
+install -m 755 scripts/store_log.sh %{buildroot}%{_bindir}/
+install -m 755 scripts/udev_creation.sh %{buildroot}%{_bindir}/
+install -m 755 scripts/replication.conf %{buildroot}%{_sysconfdir}/ka
 
-install -m 644 doc/ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.1
-install -m 644 doc/ka-deploy.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-deploy.1
-ln -s ka-d.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d.sh.1
-ln -s ka-deploy.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d-server.1
-ln -s ka-deploy.1 $RPM_BUILD_ROOT%{_mandir}/man1/ka-d-client.1
+install -m 644 doc/ka-d.1 %{buildroot}%{_mandir}/man1/ka-d.1
+install -m 644 doc/ka-deploy.1 %{buildroot}%{_mandir}/man1/ka-deploy.1
+ln -s ka-d.1 %{buildroot}%{_mandir}/man1/ka-d.sh.1
+ln -s ka-deploy.1 %{buildroot}%{_mandir}/man1/ka-d-server.1
+ln -s ka-deploy.1 %{buildroot}%{_mandir}/man1/ka-d-client.1
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files server
 %doc README BUGS INSTALL doc 

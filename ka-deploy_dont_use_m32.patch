@@ -1,0 +1,17 @@
+---
+ src/Makefile |    2 	1 +	1 -	0 !
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ka-deploy/src/Makefile
+===================================================================
+--- ka-deploy.orig/src/Makefile	2007-10-25 04:59:21.000000000 -0400
++++ ka-deploy/src/Makefile	2008-05-14 05:09:39.000000000 -0400
+@@ -62,7 +62,7 @@ MCAST = no
+ 
+ SOBJCORE = server.o udp.o
+ COBJCORE = client.o udp.o
+-CFLAGSCORE = -O -Wall -Werror -m32
++CFLAGSCORE = -O -Wall -Werror
+ 
+ ifeq ($(MCAST),yes)
+   CFLAGS = $(CFLAGSCORE) -DUSE_RMTP_LIB

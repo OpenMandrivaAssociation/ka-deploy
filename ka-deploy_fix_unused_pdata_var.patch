@@ -1,0 +1,101 @@
+diff -rau ka-deploy-0.94.4/src/client.c ka-deploy-0.94.4.patched/src/client.c
+--- ka-deploy-0.94.4/src/client.c	2010-02-04 09:46:01.000000000 +0000
++++ ka-deploy-0.94.4.patched/src/client.c	2011-05-05 10:03:55.000000000 +0000
+@@ -324,10 +324,10 @@
+ int say_go_now()
+ {
+ 	struct client_packet packet;
+-	struct packet_client_says_go_now * pdata;
++//	struct packet_client_says_go_now * pdata;
+ 	
+ 	packet.type = client_says_go_now;
+-	pdata = (struct packet_client_says_go_now *) &(packet.data);
++//	pdata = (struct packet_client_says_go_now *) &(packet.data);
+ 	
+ 	return send_packet_server(&packet);	
+ }
+@@ -335,10 +335,10 @@
+ int say_has_finished()
+ {
+ 	struct client_packet packet;
+-	struct packet_client_says_has_finished * pdata;
++//	struct packet_client_says_has_finished * pdata;
+ 	
+ 	packet.type = client_says_has_finished;
+-	pdata = (struct packet_client_says_has_finished *) &(packet.data);
++//	pdata = (struct packet_client_says_has_finished *) &(packet.data);
+ 	
+ 	return send_packet_server(&packet);	
+ }
+@@ -346,10 +346,10 @@
+ int say_accept_data()
+ {
+ 	struct client_packet packet;
+-	struct packet_client_accepts_data * pdata;
++//	struct packet_client_accepts_data * pdata;
+ 	
+ 	packet.type = client_accepts_data;
+-	pdata = (struct packet_client_accepts_data *) &(packet.data);
++//	pdata = (struct packet_client_accepts_data *) &(packet.data);
+ 	
+ 	return send_packet_server(&packet);	
+ }
+@@ -1202,10 +1202,10 @@
+ 
+ 	fd_set sockset;
+ 	
+-	int addr_len;
++//	int addr_len;
+ 	char udppacket[UDP_MAX_PACKET_LEN];
+ 
+-	addr_len = sizeof(struct sockaddr);
++//	addr_len = sizeof(struct sockaddr);
+ 
+ 
+ 	if ((he=gethostbyname("255.255.255.255")) == NULL) 
+diff -rau ka-deploy-0.94.4/src/server.c ka-deploy-0.94.4.patched/src/server.c
+--- ka-deploy-0.94.4/src/server.c	2002-06-13 13:55:03.000000000 +0000
++++ ka-deploy-0.94.4.patched/src/server.c	2011-05-05 10:04:45.000000000 +0000
+@@ -458,11 +458,11 @@
+ int give_ip_client(struct client * client, IP ip)
+ {
+ 	struct server_packet packet;
+-	struct packet_server_gives_ip * pdata;
++//	struct packet_server_gives_ip * pdata;
+ 	
+ 	packet.type = server_gives_ip;
+-	pdata = (struct packet_server_gives_ip *) &(packet.data);
+-	pdata->ip = ip;
++//	pdata = (struct packet_server_gives_ip *) &(packet.data);
++//	pdata->ip = ip;
+ 	
+ 	return send_packet_client(client, &packet);
+ 	
+@@ -490,11 +490,11 @@
+ int say_drop_child(struct client * dad, struct client * son)
+ {
+ 	struct server_packet packet;
+-	struct packet_server_says_drop_child * pdata;
++//	struct packet_server_says_drop_child * pdata;
+ 	
+ 	packet.type = server_says_drop_child;
+-	pdata = (struct packet_server_says_drop_child *) &(packet.data);
+-	pdata->ip = son->ip;
++//	pdata = (struct packet_server_says_drop_child *) &(packet.data);
++//	pdata->ip = son->ip;
+ 	return send_packet_client(dad, &packet);
+ }
+ 
+@@ -503,10 +503,10 @@
+ int say_finish_client(struct client * client)
+ {
+ 	struct server_packet packet;
+-	struct packet_server_says_finish * pdata;
++//	struct packet_server_says_finish * pdata;
+ 	
+ 	packet.type = server_says_finish;
+-	pdata = (struct packet_server_says_finish *) &(packet.data);
++//	pdata = (struct packet_server_says_finish *) &(packet.data);
+ 	
+ 	return send_packet_client(client, &packet);	
+ }

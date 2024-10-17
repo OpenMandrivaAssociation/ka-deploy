@@ -12,7 +12,7 @@ Group:          System/Cluster
 Source:         %{name}-%{version}.tar.bz2
 Patch0:		ka-deploy_dont_use_m32.patch
 Patch1:		ka-deploy_fix_unused_pdata_var.patch
-Url:            http://kadeploy.imag.fr/
+Url:            https://kadeploy.imag.fr/
 BuildRequires:	glibc-static-devel
 
 %description
